@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Feedback {% endblock %}
+{% block content %}
+    <style>
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-left:10px;
+        }
+        button{
+            margin-left: 15px;
+        }
+        
+    </style>
+    <h1>Feedback Form</h1>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Send</button>
+    </form>
+    <br><br>
+    {% if errors %}
+        <span style="color:red; font-size:20px;">
+            {{ errors }}
+        </span>
+    {% endif %}
+{% endblock %}

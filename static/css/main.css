@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+}
+
+nav {
+    height: 17vh;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 3px;
+    display: flex;
+}
+
+#content {
+    min-height: 68vh;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#menu {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer {
+    height: 8vh;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    background-color: black;
+    margin-top: 50px;
+
+
+}
+
+.text-footer {
+    color: white;
+    font-size: 20px;
+
+}
+
+.menu-a {
+    color: black;
+    font-size: 30px;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+.a-footer:hover {
+    color: red;
+}
+
+.menu-a:hover {
+    color:green;
+    box-shadow:15px 15px 15px rgba(50,110,10,5);
+    transition: box-shadow 0.5s ease;
+}
+
+h1 {
+    text-align: center;
+    font-size:50px;
+}
+
+p {
+    font-size: 30px;
+}
+
+.p-category {
+    text-align: center;
+    color: green;
+}
+
+.categories {
+    height: 300px;
+    width: 250px;
+}
+
+.category-img {
+    margin-left: 25px;
+    width: 200px;
+    height: 200px;
+}
+
+.flex-category {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.categories:hover {
+    background-color: lemonchiffon;
+    transition: background-color 0.5s ease;
+}
+
+input {
+    font-size:25px;
+    background-color: lightcyan;
+    border-style: dashed;
+    border-color: green;
+    border-width:2px;
+    width: 280px;
+    height: 30px;
+    margin-top: 15px;
+    margin-left: 10px;
+    box-shadow: 10px 10px 10px rgba(25, 0, 80, 1);
+    border-radius: 10px
+}
+
+textarea {
+    font-size:25px;
+    background-color: lightcyan;
+    border-style: dashed;
+    border-color: green;
+    border-width:2px;
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 350px;
+    height: 200px;
+    box-shadow: 10px 10px 10px rgba(25, 0, 80, 1);
+    resize: none;
+    border-radius: 10px;
+}
+
+button {
+    background-color: darkseagreen;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-color: lightgray;
+    box-shadow: 10px 10px 10px rgba(25, 50, 80, 1);
+    border-radius:10px;
+    border-width:3px;
+}
+
+button:hover {
+    background-color: lightgreen;
+    transition: background-color 0.5s ease;
+}
+
+select {
+    font-size:25px;
+    margin-top: 20px;
+    width: 200px;
+    height: 30px;
+    background-color: lightcyan;
+    box-shadow: 10px 10px 10px rgba(25, 50, 80, 1);
+    border-style:dashed;
+    border-color:green;
+    border-width:2px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.class-reg-h3 {
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    font-size:30px;
+    margin-top:10px;
+}

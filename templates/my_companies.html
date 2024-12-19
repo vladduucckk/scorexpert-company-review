@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} My Companies {% endblock %}
+{% block content %}
+    {% if messages %}
+        {% for i in messages %}
+          <h1 style="color:blue">{{ i|upper }}</h1>
+        {% endfor %}
+        <br><br>
+    {% endif %}
+    <h1>Hello <i>{{ request.user.username }}</i>! Here you can see the companies you have created.</h1>
+    {% if text %}
+        <br><br>
+        <h1 style="color:red; font-size:50px;"> {{ text }} </h1>
+    {% elif data %}
+        <br><br>
+        {% include 'div_companies.html' %}
+    {% endif %}
+
+{% endblock %}

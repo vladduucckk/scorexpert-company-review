@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Add company {% endblock %}
+{% block content %}
+    <style>
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-left:10px;
+        }
+        button{
+            margin-left: 10px;
+        }
+        select{
+            margin-left:15px;
+        }
+        
+    </style>
+    <h1>Create a Company</h1>
+    <br><br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button>Create category</button>
+        <br><br><br>
+        {% if errors %}
+            <span style="color:red;"> {{ errors }} </span>
+        {% endif %}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} ScoreXpert {% endblock %}
+{% block content %}
+    <br>
+    <p>Welcome to ScoreXpert. You can help the community by leaving a review about a company, which will help people understand what these organizations are like and may even save someone from scammers.</p>
+    <p>The power of a review goes beyond just a rating – it helps shape the reputation of businesses and ensures that others are aware of the risks or benefits they may encounter.</p>
+    <br><br>
+    <b><p>The number of companies in different categories:</p></b>
+    <ul>
+        <li>Electronics & Technology: <b>{{ electronics_data }}</b></li>
+        <li>Business Services: <b>{{ business_data }}</b></li>
+        <li>Vehicles & Transportation: <b>{{ vehicles_data }}</b></li>
+        <li>Education & Training: <b>{{ edu_data }}</b></li>
+        <li>Shopping & Fashion: <b>{{ fashion_data }}</b></li>
+    </ul>
+{% endblock %}

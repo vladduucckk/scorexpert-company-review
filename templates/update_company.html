@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %} Update: {{ company_name }} {% endblock %}
+{% block content %}
+     <style>
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-left:15px;
+        }
+        button{
+            margin-left: 10px;
+            margin-top:30px;
+        }
+        select{
+            margin-left:10px;
+        }
+     </style>
+    <h1>Update: {{ company_name }}</h1>
+    <br><br>
+    <div style="padding-left:30px;">
+    <form method="post">
+        {% csrf_token %}
+        {% for data in form %}
+            <b><label style="font-size:30px;" for="{{ data.id_for_label }}">{{ data.label }}:</label></b>
+            <br><br>
+            {{ data }}
+            <br><br>
+        {% endfor %}
+        <button>Update</button>
+    </form>
+    </div>
+
+{% endblock %}

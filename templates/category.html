@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Categories {% endblock %}
+{% block content %}
+    <div class="flex-category">
+        <a href="{% url 'category' category_name="tech" %}">
+            <div class="categories">
+                <p class="p-category">Electronics & Technology</p>
+                <img src="{% static 'img/technology.png' %}" alt="electronics and technology" class="category-img">
+            </div>
+        </a>
+        <a href="{% url 'category' category_name="business" %}">
+            <div class="categories">
+                <p class="p-category">Business Services</p>
+                <img src="{% static 'img/finance.png' %}" alt="electronics and technology" class="category-img">
+            </div>
+        </a>
+        <a href="{% url 'category' category_name="transportation" %}">
+            <div class="categories">
+                <p class="p-category">Vehicles & Transportation</p>
+                <img src="{% static 'img/car.png' %}" alt="electronics and technology" class="category-img">
+            </div>
+        </a>
+        <a href="{% url 'category' category_name="science" %}">
+        <div class="categories">
+            <p class="p-category">Education & Training</p>
+            <img src="{% static 'img/science.png' %}" alt="electronics and technology" class="category-img">
+        </div>
+        </a>
+        <a href="{% url 'category' category_name="fashion" %}">
+        <div class="categories">
+            <p class="p-category">Shopping & Fashion</p>
+            <img src="{% static 'img/fashion.png' %}" alt="electronics and technology" class="category-img">
+        </div>
+        </a>
+    </div>
+
+{% endblock %}

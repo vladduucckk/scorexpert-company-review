@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} All Companies {% endblock %}
+{% block content %}
+    <h1>All companies</h1>
+    <br>
+    <div style="display:flex; flex-direction: column; align-items: center">
+        <form method="get">
+            <input name="search" maxlength="30" type="text" style="width:800px; text-align:center;font-size:30px;height:50px;"
+                   placeholder="Enter a company for search">
+        </form>
+    <br><br>
+    </div>
+    {% if text %}
+        <h1 style="color:red; margin-top:50px; font-size:50px;">{{ text }}</h1>
+    {% elif data %}
+        <br><br>
+        {% include 'div_companies.html' %}
+    {% endif %}
+{% endblock %}

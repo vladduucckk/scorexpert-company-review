@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}?v={{ STATIC_VERSION }}">
+</head>
+<body style="background-color:lavender">
+<div style="display:flex;flex-direction: column; align-items: center">
+    {% if messages %}
+        {% for i in messages %}
+            <h1 style="color:green; margin-top:10px;">{{ i|upper }}</h1>
+        {% endfor %}
+    {% endif %}
+    <br><br>
+    <h1>Login User</h1>
+    <br><br>
+    <div style="width:800px;display:flex; flex-direction: column; align-items: center ;justify-content: space-around; height:380px; border-radius:30px; opacity:0.8; background-color:lightsteelblue;border-style:solid;border-color:lightblue;border-width:10px;">
+        <form method="post">
+            {% csrf_token %}
+            <h3 class="class-reg-h3">{{ form.username.label_tag }}</h3>
+            <br>
+            {{ form.username }}
+            <br>
+            <h3 class="class-reg-h3"> {{ form.password.label_tag }}</h3>
+            <br>
+            {{ form.password }}
+            <br>
+            <button style="margin-left:50px; margin-top:30px;">Login</button>
+        </form>
+    </div>
+    <br>
+    <a style="font-size:30px; color:red;" href="{% url 'register' %}">Register</a>
+    <br><br>
+    {% if errors %}
+        <div style="background-color:red; margin-bottom:10px;">
+            {{ errors }}
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>

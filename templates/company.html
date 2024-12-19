@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %} {{ company_name }} Reviews {% endblock %}
+{% block content %}
+    <style>
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-left:15px;
+        }
+        button{
+            margin-left: 10px;
+        }
+        select{
+            margin-left:10px;
+        }
+        
+    </style>
+    <div style="word-break:break-word;">
+    <h1 style="font-size:50px;">{{ company_name }}</h1><br>
+    </div>
+    <div style="display:flex; flex-direction: column; align-items: center; background-color: lightblue; border-style:solid; border-width:5px; border-color:green; border-radius:10px;">
+        {% for i in details_company %}
+            <br><br>
+            <div style="padding-right:20px; width:95%;">
+                <b><a style="float:right; font-size:50px; color:blue;" href="{% url 'update_company' company_name=i.name %}">Update</a></b>
+                <b><a style="float:right; font-size:50px; margin-right:50px; color:red;" href="{% url 'delete_company' company_name=i.name %}">Delete</a></b>
+            </div>
+            <br><br>
+            <img width="600px" height="600px" src="{{ i.image.url }}" alt="image for company">
+            <br><br>
+            <div style="word-break:break-word;">
+            <b><p style="text-align:center;">Description: {{ i.description }}</p></b>
+            <br><br>
+            <b><p style="text-align:center;">Adress: {{ i.adress }}</p></b>
+            </div>
+            <br><br>
+            <a style="color:red; font-size:30px;" href="{{ i.url }}">Company link</a>
+            <br><br>
+        {% endfor %}
+    </div>
+    <br><br>
+    <h1 style="font-size:50px;">Review Statistics</h1><br>
+    <div style="border-style:solid;border-color:blue;border-width:5px;border-radius:5px; padding-left:10px; padding-top: 10px; padding-bottom:10px;">
+        <p>Average: {{ avg_mark.avg|floatformat:2 }}</p>
+        <p>Total: {{ total_review }}</p>
+        <div>
+            <p>Number of reviews by rating:</p>
+            <p style="color:green">5: {{ review5 }} </p>
+            <p style="color: mediumseagreen">4: {{ review4 }} </p>
+            <p style="color: coral">3: {{ review3 }} </p>
+            <p style="color:orange">2: {{ review2 }} </p>
+            <p style="color:red;">1: {{ review1 }} </p>
+        </div>
+        <p></p>
+    </div>
+    <br><br>
+    <h1 style="font-size:50px;">Create Review</h1>
+    <br>
+    <div style="background-color:lightblue; padding-top:10px;padding-left:10px;padding-bottom:10px; border-style:solid;border-radius:5px;border-color:green;border-width:5px;">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button>Send Review</button>
+            <br><br>
+        </form>
+    </div>
+    <br><br>
+    <h1 style="font-size:50px;">Reviews</h1>
+    <br>
+    <div style="background-color:lightcyan; display:flex;flex-direction: column; border-style:solid;border-width:5px;border-color:green; border-radius:5px; align-items: center; width:99%;">
+        {% for i in details_review %}
+            <br>
+            <p>User: <b>{{ i.user.username }}</b></p>
+            <br>
+            <p style="font-size:30px;word-break:break-word; text-align:center;">{{ i.comment }}</p>
+            <br>
+            <p>Mark: <b>{{ i.mark }}</b></p>
+            <br>
+            <p>Date: <b>{{ i.created_at|date:"Y-m-d H:i" }}</b></p>
+            <br><br><br><br><br><br>
+        {% endfor %}
+    </div>
+
+{% endblock %}
