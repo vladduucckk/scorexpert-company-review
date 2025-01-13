@@ -59,24 +59,27 @@ This platform allows users to leave reviews and feedback on various companies ac
     touch .env
     ```
     **After create file**
-    ```python .env
+    ```.env
     SECRET_KEY = yoursecretkey
     EMAIL_HOST_USER = youremail
     EMAIL_HOST_PASSWORD = youremailpassword
     ```
-   
 
 5. Apply migrations to set up the database:
     ```bash
     python manage.py migrate
     ```
+6. Execute command in terminal for creation companies
+      ```bash
+    python manage.py create_categories
+    ```
 
-6. Start the development server:
+7. Start the development server:
     ```bash
     python manage.py runserver
     ```
 
-7. Visit `http://127.0.0.1:8000/` in your browser.
+8. Visit `http://127.0.0.1:8000/` in your browser.
 
 ## Technology Stack
 - **Backend**: Django (Python)
@@ -84,8 +87,10 @@ This platform allows users to leave reviews and feedback on various companies ac
 - **Database**: SQLite
 - **API**: Django Rest Framework
 
+
 ## Contact
 
 For any questions or inquiries, please feel free to reach out at:  
 - Email: vladislavmojseev@gmail.com
 - GitHub: [https://github.com/vladduucckk](https://github.com/vladduucckk)
+
