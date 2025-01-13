@@ -3,18 +3,21 @@ from .models import Company, Category, Review, Feedback
 
 
 class CompanyAdmin(admin.ModelAdmin):
+    """Реєстрація в адмін-панелі моделі Company"""
     list_display = ("name", "cat", "description")
     search_fields = ("name",)
     list_filter = ("cat",)
 
 
 class ReviewAdmin(admin.ModelAdmin):
+    """Реєстрація в адмін-панелі моделі Review"""
     list_display = ("mark", "company", "user", "comment")
     search_fields = ("comment",)
     list_filter = ("mark",)
 
 
 class FeedbackAdmin(admin.ModelAdmin):
+    """Реєстрація в адмін-панелі моделі Feedback"""
     readonly_fields = ("name", "email", "message")
 
 

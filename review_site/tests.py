@@ -7,6 +7,7 @@ from .views import add_company, update_company, delete_company
 
 
 class ModelCategoryTests(TestCase):
+    """Тестування моделей"""
     def setUp(self):
         self.category = Category.objects.create(name="Category 100")
 
@@ -24,6 +25,7 @@ class ModelCategoryTests(TestCase):
 
 
 class FormFeedbackTests(TestCase):
+    """Тестування форм"""
     def test_form_valid(self):
         data = {"name": "Joe Biden", "email": "joebiden@gmail.com", "message": "Nice site!"}
         form = FeedbackForm(data=data)
@@ -41,6 +43,7 @@ class FormFeedbackTests(TestCase):
 
 
 class NotAuthenticatedUserTests(TestCase):
+    """Тест сценаріїв коли користувач не авторизований"""
     def test_not_authenticated_add_company(self):
         response = self.client.get(reverse('add_company'))
         self.assertEqual(response.status_code, 302)
@@ -55,6 +58,7 @@ class NotAuthenticatedUserTests(TestCase):
 
 
 class AuthenticatedUserTests(TestCase):
+    """Тест сценаріїв коли користувач авторизований"""
     def setUp(self):
         self.user = User.objects.create_user(username="test", password="testpass")
         self.client.login(username="test", password="testpass")
@@ -69,6 +73,7 @@ class AuthenticatedUserTests(TestCase):
 
 
 class UrlsTests(TestCase):
+    """Тест на відношення url адресси до view"""
     def test_resolve_add_company(self):
         resolver = resolve('/add-company/')
         self.assertEqual(resolver.func, add_company)

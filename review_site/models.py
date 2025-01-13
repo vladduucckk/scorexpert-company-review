@@ -4,6 +4,7 @@ from django.db import models
 
 
 class Category(models.Model):
+    """Модель категорій"""
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
@@ -11,6 +12,7 @@ class Category(models.Model):
 
 
 class Company(models.Model):
+    """Модель компаній"""
     name = models.CharField(max_length=50, unique=True, db_index=True)
     description = models.TextField()
     adress = models.TextField()
@@ -24,6 +26,7 @@ class Company(models.Model):
 
 
 class Feedback(models.Model):
+    """Модель для фідбеку від користувача"""
     name = models.CharField(max_length=30)
     email = models.EmailField(max_length=50)
     message = models.TextField()
@@ -33,6 +36,7 @@ class Feedback(models.Model):
 
 
 class Review(models.Model):
+    """Модель для відгуів для компаній"""
     comment = models.TextField()
     mark = models.CharField(choices=(('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')), default="5",
                             max_length=10)

@@ -22,6 +22,7 @@ from .serializers import ReviewSerializer
 
 
 def home(request):
+    """Обробник домашньої сторінки"""
     electronics_data = Company.objects.filter(cat__name="Electronics & Technology").count()
     business_data = Company.objects.filter(cat__name="Business Services").count()
     vehicles_data = Company.objects.filter(cat__name="Vehicles & Transportation").count()
@@ -33,11 +34,13 @@ def home(request):
 
 
 def about(request):
+    """Обробник інформаційної сторінки"""
     return render(request, 'about.html')
 
 
 @login_required(login_url='login')
 def my_companies(request):
+    """Обробник власних компаній користувача"""
     data = Company.objects.filter(user=request.user)
     if data.count() > 0:
         return render(request, 'my_companies.html', {'data': data})
@@ -47,6 +50,7 @@ def my_companies(request):
 
 
 def all_companies(request):
+    """Обробник всих компаній"""
     search = request.GET.get('search')
     if search is None:
         data = Company.objects.all()
@@ -61,6 +65,7 @@ def all_companies(request):
 
 
 def feedback(request):
+    """Обробник форми для відгука"""
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -82,6 +87,7 @@ def feedback(request):
 
 @login_required(login_url='login')
 def add_company(request):
+    """Обробник форми для створення запису в БД(нова компанія)"""
     form = CompanyForm()
     if request.method == 'POST':
         form = CompanyForm(request.POST, request.FILES, user=request.user)
@@ -96,10 +102,12 @@ def add_company(request):
 
 
 def categories(request):
+    """Обробник категорій"""
     return render(request, 'category.html')
 
 
 def category(request, category_name):
+    """Обробник для категорії"""
     if category_name == "tech":
         data = Company.objects.filter(cat__name="Electronics & Technology")
         return render(request, 'data_category.html',
@@ -122,6 +130,7 @@ def category(request, category_name):
 
 @login_required(login_url='login')
 def company(request, company_name):
+    """Обробник для компанії(відгуки та повна інформація)"""
     company_get = get_object_or_404(Company, name=company_name)
     details_review = Review.objects.filter(company__name=company_name)
     total_review = Review.objects.filter(company__name=company_name).count()
@@ -152,6 +161,7 @@ def company(request, company_name):
 
 @login_required(login_url='login')
 def update_company(request, company_name):
+    """Обробник для оновлення запису в БД(Оновлення інформації про компанію)"""
     get_company = get_object_or_404(Company, name=company_name)
     if get_company.user == request.user:
         if request.method == 'POST':
@@ -170,6 +180,7 @@ def update_company(request, company_name):
 
 @login_required(login_url='login')
 def delete_company(request, company_name):
+    """Обробник для видалення компанії"""
     company_get = get_object_or_404(Company, name=company_name)
     if company_get.user == request.user:
         if request.method == 'POST':
@@ -183,6 +194,7 @@ def delete_company(request, company_name):
 
 
 def register(request):
+    """Обробник для реєстрації користувача"""
     if request.user.is_authenticated:
         return redirect('home')
     elif request.method == 'POST':
@@ -200,6 +212,7 @@ def register(request):
 
 
 def login_user(request):
+    """Обробник для авторизації"""
     if request.user.is_authenticated:
         return redirect('home')
     elif request.method == 'POST':
@@ -217,15 +230,18 @@ def login_user(request):
 
 
 def logout_user(request):
+    """Обробник для завершення сессії"""
     logout(request)
     return redirect('login')
 
 
 def api_docs(request):
+    """Обробник для технічної документації по API"""
     return render(request, 'api_docs.html')
 
 
 class ReviewApiList(ListAPIView):
+    """Ендпоїнт для отримання всіх записів з відгуками"""
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     filter_backends = (DjangoFilterBackend, OrderingFilter)
@@ -235,6 +251,7 @@ class ReviewApiList(ListAPIView):
 
 
 class CompanyApiRetrieve(RetrieveAPIView):
+    """Ендпоїнт для отримання одного запису з данними про компанію"""
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     permission_classes = (AllowAny,)
